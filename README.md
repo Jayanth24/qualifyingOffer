@@ -20,9 +20,9 @@ Steps to run my solution to Question 2:
 4. Download this GitHub repository as a ZIP file (qualifyingOffer.zip) by clicking on the Code -> "Download ZIP" button at the top right of this
    page.
 
-5. Extract qualifyingOffer.zip file into a folder on your Local Machine. Change directory into the qualifyingOffer folder.
+5. Extract qualifyingOffer.zip file into a folder on your Local Machine. Change directory into the extracted folder.
 
-6. Create a Python Virtual Environment called 'env' inside the qualifyingOffer folder by using one of the following commands
+6. Create a Python Virtual Environment called 'env' inside the extracted folder by using one of the following commands
    (based on the Operating System being used):
    
         On Unix or MacOS: python3 -m venv env
@@ -41,8 +41,7 @@ Steps to run my solution to Question 2:
 
         pip install -r requirements.txt
    
-9. Execute the Python program that produces the generated output for my solution to Question 2 of the Phillies Baseball R&D Questionnaire by 
-   running the following command:
+9. Execute the Python program that produces the generated output for Question 2 by running the following command:
    
         python qualifyingOffer.py
   
