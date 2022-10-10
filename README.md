@@ -17,10 +17,10 @@ Steps to run my solution to Question 2:
         On Linux/Unix or MacOS: python3 -m pip install --user virtualenv
         On Windows: py -m pip install --user virtualenv
 
-4. Download this GitHub repository as a ZIP file (qualifyingOffer.zip) by clicking on the Code -> "Download ZIP" button at the top right of this
+4. Download this GitHub repository as a ZIP file by clicking on the Code -> "Download ZIP" button at the top right of this
    page.
 
-5. Extract qualifyingOffer.zip file into a folder on your Local Machine. Change directory into the extracted folder.
+5. Extract the downloaded ZIP file into a folder on your Local Machine. Change directory into the extracted folder.
 
 6. Create a Python Virtual Environment called 'env' inside the extracted folder by using one of the following commands
    (based on the Operating System being used):
@@ -34,8 +34,8 @@ Steps to run my solution to Question 2:
         On Linux/Unix or MacOS, using the bash shell: source env/bin/activate
         On Linux/Unix or MacOS, using the csh shell: source env/bin/activate.csh
         On Linux/Unix or MacOS, using the fish shell: source env/bin/activate.fish
-        On Windows using the Command Prompt: env\Scripts\activate.bat
-        On Windows using PowerShell: env\Scripts\Activate.ps1
+        On Windows, using the Command Prompt: env\Scripts\activate.bat
+        On Windows, using PowerShell: env\Scripts\Activate.ps1
    
 8. Install all the Python packages needed to run qualifyingOffer.py within the activated 'env' virtual environment by running the following command:
 
