@@ -296,6 +296,8 @@ def main():
   plt.subplots_adjust(hspace = 0.6)
   plt.subplots_adjust(wspace = 0.8)
 
+  fig.canvas.manager.set_window_title('Question 2 Solution: Qualifying Offer Display')
+
   fig.suptitle("The value of the Qualifying Offer is a one year contract worth $" + str(qualifying_offer) + ".",
                fontsize=14, fontweight='bold')
 
