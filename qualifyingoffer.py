@@ -325,6 +325,5 @@ def main():
                                           "Top 10 Highest Salaried Players vs Qualifying Offer")
 
   plt.show()
-
-
+  
 main()
