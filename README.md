@@ -17,7 +17,7 @@ Steps to run my solution to Question 2:
         On Unix or MacOS: python3 -m pip install --user virtualenv
         On Windows: py -m pip install --user virtualenv
 
-4. Download this GitHub repository as a ZIP file (qualifyingOffer.zip) by clicking on the Code -> "Download Zip" button at the top right of this
+4. Download this GitHub repository as a ZIP file (qualifyingOffer.zip) by clicking on the Code -> "Download ZIP" button at the top right of this
    page.
 
 5. Extract qualifyingOffer.zip file into a folder on your Local Machine. Change directory into the qualifyingOffer folder.
