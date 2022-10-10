@@ -7,7 +7,7 @@ Steps to run my solution to Question 2:
 1. Install any version of Python 3 that corresponds to your Operating System (instructions available at https://www.python.org/downloads/).
 
 2. Confirm that pip is installed on your Operating System (it should be if you have installed Python 3 from python.org) by using one 
-   of the following commands (based on the Operating System being used):
+   of the following commands (based on the Operating System being used, will display the version of pip currently installed):
    
         On Linux/Unix or macOS: python3 -m pip --version
         On Windows: py -m pip --version
