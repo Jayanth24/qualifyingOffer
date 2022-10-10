@@ -134,7 +134,7 @@ def plot_histogram_vs_qualifying_offer(axis, salary_data, qualifying_offer, titl
   axis.set_title(title)
   axis.axvline(x=qualifying_offer, color='red', ymax = 0.95, 
                label='qualifying offer \n($' + '{:.2e}'.format(qualifying_offer) + ")")
-  axis.legend(loc='upper right')
+  axis.legend(bbox_to_anchor=(1.0, 1), loc='upper left', fontsize = 7)
 
 def plot_line_graph_vs_qualifying_offer(axis, salary_data, qualifying_offer, title):
   """
@@ -162,8 +162,8 @@ def plot_line_graph_vs_qualifying_offer(axis, salary_data, qualifying_offer, tit
   axis.set_xlabel("Player Index (by Descending Order of Salary)")
   axis.set_title(title)
   axis.axhline(y=qualifying_offer, color='red', xmin = 0.05, xmax = 0.95, 
-               label='qualifying offer ($' + '{:.2e}'.format(qualifying_offer) + ")")
-  axis.legend(loc='upper right')
+               label='qualifying \noffer \n($' + '{:.2e}'.format(qualifying_offer) + ")")
+  axis.legend(bbox_to_anchor=(1.0, 1), loc='upper left', fontsize = 7)
 
 def plot_line_graph_vs_mean_std_qualifying_offer(axis, salary_data, qualifying_offer, title, top):
   """
@@ -198,14 +198,15 @@ def plot_line_graph_vs_mean_std_qualifying_offer(axis, salary_data, qualifying_o
   sns.lineplot(ax = axis, data=salary_stats)
   if top:
     axis.axhline(y=qualifying_offer, color='red', xmin = 0.05, xmax = 0.95, 
-                 label='mean = qualifying offer ($' + '{:.2e}'.format(qualifying_offer) + ")")
+                 label='qualifying offer = \nmean \n ($' + '{:.2e}'.format(qualifying_offer) + ")")
     handles, labels = axis.get_legend_handles_labels()
     axis.legend(handles=handles[2:], labels=labels[2:])
   else:
     axis.axhline(y=qualifying_offer, color='red', xmin = 0.05, xmax = 0.95, 
-                 label='qualifying offer ($' + '{:.2e}'.format(qualifying_offer) + ")")
+                 label='qualifying \noffer\n ($' + '{:.2e}'.format(qualifying_offer) + ")")
     handles, labels = axis.get_legend_handles_labels()
     axis.legend(handles=handles[1:], labels=labels[1:])
+  axis.legend(bbox_to_anchor=(1.0, 1), loc='upper left', fontsize = 7)
   axis.set_title(title)
   axis.set_xlabel("Sorted Player Index")
   axis.set_ylabel("Salary")
@@ -213,7 +214,7 @@ def plot_line_graph_vs_mean_std_qualifying_offer(axis, salary_data, qualifying_o
 def plot_percentiles_vs_qualifying_offer(axis, salary_data, qualifying_offer, title):
   """
   Function that plots a boxplot all of the salaries in the provided Salary
-  DataFrame (highlighting the 0, 25, 50, 75, and 100 percentages), and overlays
+  DataFrame (highlighting the 25, 50, and 75th percentiles), and overlays
   the monetary value of the qualifying offer on top of this boxplot as a comparative 
   visualization.
 
@@ -235,14 +236,14 @@ def plot_percentiles_vs_qualifying_offer(axis, salary_data, qualifying_offer, ti
   """
   sns.boxplot(ax = axis, x=salary_data["Salary"])
   percentiles = [0, 25, 50, 75, 100]
-  colors = ['green', 'yellow', 'orange', 'purple', 'black']
-  quantiles = np.quantile(salary_data["Salary"], np.array([0.00, 0.25, 0.50, 0.75, 1.00]))
+  colors = ['green', 'black', 'orange', 'magenta', 'yellow']
+  quantiles = np.quantile(salary_data["Salary"], np.array([0, 0.25, 0.50, 0.75, 1.00]))
   for index, line in enumerate(quantiles):
     axis.axvline(x=line, ymax = 0.95, color = colors[index], 
                  label= str(percentiles[index]) + 'th percentile \n ($' + '{:.2e}'.format(line) + ")")
   axis.axvline(x=qualifying_offer, color='red', ymax = 0.95, 
-               label='qualifying offer \n ($' + '{:.2e}'.format(qualifying_offer) + ")")
-  axis.legend(bbox_to_anchor=(1.0, 1), loc='upper left')
+               label='qualifying offer \n($' + '{:.2e}'.format(qualifying_offer) + ")")
+  axis.legend(bbox_to_anchor=(1.0, 1), loc='upper left', fontsize = 7)
   axis.set_title(title)
 
 def plot_top_ten_salaries_vs_qualifying_offer(axis, salary_data, qualifying_offer, title):
@@ -267,12 +268,13 @@ def plot_top_ten_salaries_vs_qualifying_offer(axis, salary_data, qualifying_offe
   title: string
     The displayed title of this seaborn subplot.
   """
+  salary_data["Player"]= salary_data["Player"].str.split(",", n=1, expand=True).reset_index()[0]
   sns.barplot(ax = axis, data = salary_data[0:10], x = 'Player', y = 'Salary')
-  axis.tick_params(axis='x', rotation=75)
+  axis.tick_params(axis='x', rotation=85, labelsize=7)
   axis.set_title(title)
   axis.axhline(y=qualifying_offer, color='red', xmin = 0.05, xmax = 0.95, 
-               label='qualifying offer ($' + '{:.2e}'.format(qualifying_offer) + ")")
-  axis.legend(loc='upper right')
+               label='qualifying \noffer \n ($' + '{:.2e}'.format(qualifying_offer) + ")")
+  axis.legend(bbox_to_anchor=(1.0, 1), loc='upper left', fontsize = 7)
 
 def main():
   """
@@ -295,9 +297,9 @@ def main():
   non_null_salary_data = salary_data_sorted[~salary_data_sorted["Salary"].isna()].reset_index()
   top_salary_data = salary_data_sorted[~salary_data_sorted["Salary"].isna()][0:NUM_TOP_PLAYERS].reset_index()
 
-  fig, axes = plt.subplots(3, 3, figsize=(24, 12))
-  plt.subplots_adjust(hspace = 0.6)
-  plt.subplots_adjust(wspace = 0.8)
+  fig, axes = plt.subplots(3, 3, figsize=(20, 10))
+  plt.subplots_adjust(hspace = 1)
+  plt.subplots_adjust(wspace = 1)
 
   fig.canvas.manager.set_window_title('Question 2 Solution: Qualifying Offer Display')
 
@@ -305,27 +307,30 @@ def main():
                fontsize=14, fontweight='bold')
 
   plot_histogram_vs_qualifying_offer(axes[0][0], non_null_salary_data, qualifying_offer,
-                                       "All Salaries Histogram vs Qualifying Offer")
+                                       "All Salaries Histogram vs\n Qualifying Offer")
   plot_line_graph_vs_qualifying_offer(axes[0][1], non_null_salary_data, qualifying_offer, 
-                                        "All Salaries Line Graph vs Qualifying Offer")
+                                        "All Salaries Line Graph vs\n Qualifying Offer")
   plot_line_graph_vs_mean_std_qualifying_offer(axes[0][2], non_null_salary_data, qualifying_offer, 
-                                        "All Salaries Line Graph vs Mean, Std, and Qualifying Offer", 
+                                        "All Salaries Line Graph vs\n Mean, Std, and Qualifying Offer",
                                         False)
   plot_percentiles_vs_qualifying_offer(axes[1][0], non_null_salary_data, qualifying_offer, 
-                                        "All Salaries Percentile Information vs Qualifying Offer")
+                                        "All Salaries Percentile Information vs\n Qualifying Offer")
 
   plot_histogram_vs_qualifying_offer(axes[1][1], top_salary_data, qualifying_offer,
-                                       "Top 125 Salaries Histogram vs Qualifying Offer")
+                                       "Top 125 Salaries Histogram vs\n Qualifying Offer")
   plot_line_graph_vs_qualifying_offer(axes[1][2], top_salary_data, qualifying_offer, 
-                                        "Top 125 Salaries Line Graph vs Qualifying Offer")
+                                        "Top 125 Salaries Line Graph vs\n Qualifying Offer")
   plot_line_graph_vs_mean_std_qualifying_offer(axes[2][0], top_salary_data, qualifying_offer, 
-                                        "Top 125 Salaries Line Graph vs Mean, Std and Qualifying Offer", 
+                                        "Top 125 Salaries Line Graph vs\n Mean, Std and Qualifying Offer",
                                         True)
   plot_percentiles_vs_qualifying_offer(axes[2][1], top_salary_data, qualifying_offer, 
-                                        "Top 125 Salaries Percentile Information vs Qualifying Offer")
+                                        "Top 125 Salaries Percentile Information vs\n Qualifying Offer")
   
   plot_top_ten_salaries_vs_qualifying_offer(axes[2][2], non_null_salary_data, qualifying_offer,
-                                          "Top 10 Highest Salaried Players vs Qualifying Offer")
+                                          "Top 10 Highest Salaried Players vs\n Qualifying Offer")
+
+  manager = plt.get_current_fig_manager()
+  manager.full_screen_toggle()
 
   plt.show()
 
