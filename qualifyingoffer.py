@@ -56,7 +56,7 @@ def convert_salary_to_float(salary):
   -------
   float
     Either np.NaN if the salary entry is corrupted or malformed, or the 
-    converted floating point salary otherwise.
+    converted floating point salary entry otherwise.
   """
   if pd.isna(salary):
     return np.NaN
@@ -128,7 +128,7 @@ def plot_histogram_vs_qualifying_offer(axis, salary_data, qualifying_offer, titl
     The monetary value of the qualifying offer to be added onto this seaborn subplot.
 
   title: string
-    The displayed title of the seaborn subplot.
+    The displayed title of this seaborn subplot.
   """
   sns.histplot(ax=axis, data = salary_data, x = "Salary", color='b')
   axis.set_title(title)
@@ -156,7 +156,7 @@ def plot_line_graph_vs_qualifying_offer(axis, salary_data, qualifying_offer, tit
     The monetary value of the qualifying offer to be added onto this seaborn subplot.
 
   title: string
-    The displayed title of the seaborn subplot.
+    The displayed title of this seaborn subplot.
   """
   sns.lineplot(ax = axis, data=salary_data, x = 'index', y = 'Salary')
   axis.set_xlabel("Player Index (by Descending Order of Salary)")
@@ -185,7 +185,7 @@ def plot_line_graph_vs_mean_std_qualifying_offer(axis, salary_data, qualifying_o
     The monetary value of the qualifying offer to be added onto this seaborn subplot.
 
   title: string
-    The displayed title of the seaborn subplot.
+    The displayed title of this seaborn subplot.
   
   top: boolean
     Either True if salary_data contains only the top NUM_TOP_PLAYERS (currently 125) 
@@ -231,7 +231,7 @@ def plot_percentiles_vs_qualifying_offer(axis, salary_data, qualifying_offer, ti
     The monetary value of the qualifying offer to be added onto this seaborn subplot.
 
   title: string
-    The displayed title of the seaborn subplot.
+    The displayed title of this seaborn subplot.
   """
   sns.boxplot(ax = axis, x=salary_data["Salary"])
   percentiles = [0, 25, 50, 75, 100]
@@ -265,7 +265,7 @@ def plot_top_ten_salaries_vs_qualifying_offer(axis, salary_data, qualifying_offe
     The monetary value of the qualifying offer to be added onto this seaborn subplot.
 
   title: string
-    The displayed title of the seaborn subplot.
+    The displayed title of this seaborn subplot.
   """
   sns.barplot(ax = axis, data = salary_data[0:10], x = 'Player', y = 'Salary')
   axis.tick_params(axis='x', rotation=75)
