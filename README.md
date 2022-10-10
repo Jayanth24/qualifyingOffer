@@ -9,12 +9,12 @@ Steps to run my solution to Question 2:
 2. Confirm that pip is installed on your Operating System (it should be if you have installed Python 3 from python.org) by using one 
    of the following commands (based on the Operating System being used):
    
-        On Unix or macOS: python3 -m pip --version
+        On Linux/Unix or macOS: python3 -m pip --version
         On Windows: py -m pip --version
    
 3. Install the Python package virtualenv by using one of the following commands (based on the Operating System being used):
    
-        On Unix or MacOS: python3 -m pip install --user virtualenv
+        On Linux/Unix or MacOS: python3 -m pip install --user virtualenv
         On Windows: py -m pip install --user virtualenv
 
 4. Download this GitHub repository as a ZIP file (qualifyingOffer.zip) by clicking on the Code -> "Download ZIP" button at the top right of this
@@ -25,15 +25,15 @@ Steps to run my solution to Question 2:
 6. Create a Python Virtual Environment called 'env' inside the extracted folder by using one of the following commands
    (based on the Operating System being used):
    
-        On Unix or MacOS: python3 -m venv env
+        On Linux/Unix or MacOS: python3 -m venv env
         On Windows: py -m venv env
   
 7. Activate the created 'env' virtual environment by using one of the following commands (based on the Operating System 
    shell being used):
    
-        On Unix or MacOS, using the bash shell: source env/bin/activate
-        On Unix or MacOS, using the csh shell: source env/bin/activate.csh
-        On Unix or MacOS, using the fish shell: source env/bin/activate.fish
+        On Linux/Unix or MacOS, using the bash shell: source env/bin/activate
+        On Linux/Unix or MacOS, using the csh shell: source env/bin/activate.csh
+        On Linux/Unix or MacOS, using the fish shell: source env/bin/activate.fish
         On Windows using the Command Prompt: env\Scripts\activate.bat
         On Windows using PowerShell: env\Scripts\Activate.ps1
    
@@ -44,4 +44,3 @@ Steps to run my solution to Question 2:
 9. Execute the Python program that produces the generated output for Question 2 by running the following command:
    
         python qualifyingOffer.py
-  
