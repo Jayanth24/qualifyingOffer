@@ -12,7 +12,7 @@ Steps to run my solution to Question 2:
         On Unix or macOS: python3 -m pip --version
         On Windows: py -m pip --version
    
-3. Install the Python package virtualEnv by using one of the following commands (based on the Operating System being used):
+3. Install the Python package virtualenv by using one of the following commands (based on the Operating System being used):
    
         On Unix or MacOS: python3 -m pip install --user virtualenv
         On Windows: py -m pip install --user virtualenv
