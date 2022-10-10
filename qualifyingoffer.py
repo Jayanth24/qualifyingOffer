@@ -1,11 +1,14 @@
-# -*- coding: utf-8 -*-
+"""
+Jayanth Gunda's solution to Question 2 of the Phillies
+Baseball R&D Questionnaire.
+"""
+
 """ 
 Import statements needed for the Python program. 
 """
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-import string
 import seaborn as sns
 
 """ 
@@ -186,7 +189,7 @@ def plot_line_graph_vs_mean_std_qualifying_offer(axis, salary_data, qualifying_o
   
   top: boolean
     Either True if salary_data contains only the top NUM_TOP_PLAYERS (currently 125) 
-    player salaries, and False otherwise (needed for slight differences in visualization).
+    player salaries, and False otherwise (needed for minor differences in visualization).
   """
   salary_stats = pd.DataFrame({
       'salaries': salary_data['Salary'],
@@ -281,8 +284,8 @@ def main():
   the Top 125 Salaries cases. The salaries of the Top 10 highest paid players are also 
   compared against the upcoming qualifying offer.
 
-  The monetary value of the qualifying offer is displayed in the form of a print statement before
-  the remaining visualizations are displayed.
+  The monetary value of the qualifying offer is displayed as a bolded statement above the
+  relevant accompanying visualizations.
   """
   salary_data = read_salary_data(HTML_PAGE)
   salary_data['Salary'] = salary_data['Salary'].apply(convert_salary_to_float)
@@ -298,7 +301,7 @@ def main():
 
   fig.canvas.manager.set_window_title('Question 2 Solution: Qualifying Offer Display')
 
-  fig.suptitle("The value of the Qualifying Offer is a one year contract worth $" + str(qualifying_offer) + ".",
+  fig.suptitle("The value of the Qualifying Offer is a one year contract worth $" + f"{qualifying_offer:,}" + ".",
                fontsize=14, fontweight='bold')
 
   plot_histogram_vs_qualifying_offer(axes[0][0], non_null_salary_data, qualifying_offer,
@@ -325,5 +328,5 @@ def main():
                                           "Top 10 Highest Salaried Players vs Qualifying Offer")
 
   plt.show()
-  
+
 main()
